@@ -11,10 +11,13 @@ somethingWillHappen()
    .then(response => console.log(response))
    .catch(err => console.error(err));
 
+timeout = 2000;
 const somethingWillHappen2 = () => {
     return new Promise((resolve, reject) => {
         if (true) {
-            resolve('Hey!');
+            setTimeout(() => {
+                resolve('Check time');
+            }, timeout);
         } else{
             reject('Whooops!');
         }
