@@ -1,0 +1,51 @@
+## Absolute Imports on React native 
+Puede parecer algo menor pero a medida que nuestro projecto crece esto nos puede ahorrar muchisimo trabajo ademas de mantener una structura bastante limpia si esto no te convence integrarlo a un projecto es simple. 
+primero tenemos que instalar este paquete 
+
+`
+npm i babel-plugin-module-resolver
+`
+
+o 
+
+`
+yarn add babel-plugin-module-resolver
+`
+
+luego nos dirigimos a nuestro babel.config.js
+
+
+```
+module.exports = {
+ presets: ['module:metro-react-native-babel-preset'], // existing
+ // add the following
+ plugins: [
+   [
+     'module-resolver',
+     {
+       root: ['.'],
+       alias: {
+         '@src': './src',
+         '@components': './src/components',
+       },
+     },
+   ],
+ ],
+};
+```
+
+
+luego vamos a nuestro archivo tsconfig.json 
+
+
+
+```
+"compilerOptions": {
+"baseUrl": ".",                                     
+   "paths": {
+     "@src/*": ["src/*"],
+     "@components/*": ["src/components/*"],
+   },
+ 
+}
+```
